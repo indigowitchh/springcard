@@ -51,3 +51,57 @@ void birb::fly(sf::RenderWindow& window){
 		ypos -= 1;
 	}
 }
+
+Flower::Flower(int x, int y, int c[3]) {
+	xpos = x;
+	ypos = y;
+	color[0] = c[0];
+	color[1] = c[1];
+	color[2] = c[2];
+}
+
+void Flower::draw(sf::RenderWindow& window) {
+	mid.setRadius(15);
+	mid.setFillColor((sf::Color(252,255,0)));
+	mid.setPosition(xpos, ypos);
+	window.draw(mid);
+	
+	petal1.setRadius(15);
+	petal1.setFillColor((sf::Color(color[0], color[1], color[2])));
+	petal1.setPosition(xpos+20, ypos-10);
+	window.draw(petal1);
+
+	petal2.setRadius(15);
+	petal2.setFillColor((sf::Color(color[0], color[1], color[2])));
+	petal2.setPosition(xpos+15, ypos+15);
+	window.draw(petal2);
+
+	petal3.setRadius(15);
+	petal3.setFillColor((sf::Color(color[0], color[1], color[2])));
+	petal3.setPosition(xpos, ypos-20);
+	window.draw(petal3);
+
+	petal4.setRadius(15);
+	petal4.setFillColor((sf::Color(color[0], color[1], color[2])));
+	petal4.setPosition(xpos-10, ypos+15);
+	window.draw(petal4);
+
+	petal5.setRadius(15);
+	petal5.setFillColor((sf::Color(color[0], color[1], color[2])));
+	petal5.setPosition(xpos-15, ypos-10);
+	window.draw(petal5);
+}
+
+void Flower::changeColor(sf::RenderWindow& window) {
+	int colour = rand() % 100 + 1;
+	int red = rand() % 255;
+	int green = rand() % 255;
+	int blue = rand() % 255;
+
+	if (colour <= 5) {
+		int reyIsSus[] = { red, green,blue };
+		color[0] = reyIsSus[0];
+		color[1] = reyIsSus[1];
+		color[2] = reyIsSus[2];
+	}
+}
